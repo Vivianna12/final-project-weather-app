@@ -15,6 +15,7 @@ function changeWeatherValue(response) {
   descriptionElement.innerHTML = response.data.condition.description;
   humidityElement.innerHTML = `${response.data.temperature.humidity}%`;
   windSpeedElement.innerHTML = `${response.data.wind.speed}mph`;
+  getForecast(response.data.city);
 }
 function formatDate(date) {
   let minutes = date.getMinutes();
@@ -47,7 +48,15 @@ function handleSearchForm(event) {
 
   searchCity(searchInput.value);
 }
-function displayForecast() {
+
+function getForecast(city) {
+  let apiKey = "f42atbc02aod4017c837cbfe1c70ef22";
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=imperial`;
+  axios(apiUrl).then(displayForecast);
+  console.log(apiUrl);
+}
+function displayForecast(response) {
+  console.log(response.data);
   let days = ["Tue", "Wed", "Thu", "Fri", "Sat"];
   let forecastHtml = "";
 
@@ -76,4 +85,3 @@ let searchFormElement = document.querySelector("#search-form");
 searchFormElement.addEventListener("submit", handleSearchForm);
 
 searchCity("Bronx");
-displayForecast();

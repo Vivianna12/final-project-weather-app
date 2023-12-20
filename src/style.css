@@ -88,6 +88,7 @@ footer {
   color: #000;
   display: flex;
   justify-content: space-around;
+  max-width: 700px;
 }
 .weather-forecast-date {
   font-size: 16px;

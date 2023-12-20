@@ -1,5 +1,9 @@
 body {
-  background-color: rgb(229, 249, 229);
+  background: radial-gradient(
+    circle at 10% 20%,
+    rgb(161, 255, 206) 0%,
+    rgb(250, 255, 209) 90%
+  );
   font-family: "Roboto", sans-serif;
 }
 .weather-app {
